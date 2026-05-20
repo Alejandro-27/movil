@@ -68,3 +68,25 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+# ==========================================
+# Entorno Nativo de Android (Capacitor)
+# ==========================================
+# Ignoramos las carpetas de compilación local de Android
+android/build/
+android/app/build/
+android/.gradle/
+
+# Ignoramos el archivo de configuración local del SDK (este cambia en cada PC)
+android/local.properties
+
+# Ignoramos archivos de captura, APKs compilados y llaves de firma
+android/captures/
+*.apk
+*.aar
+*.keystore
+
+# Evitar subir configuraciones específicas del IDE de Android Studio
+android/.idea/
+*.iml
