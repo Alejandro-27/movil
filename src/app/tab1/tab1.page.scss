@@ -1,0 +1,118 @@
+// Definición de Paletas y Variables por Defecto (Modo Oscuro Premium)
+:host {
+  --bg-gradient: radial-gradient(circle at top right, #1e293b, #020617);
+  --card-bg: rgba(30, 41, 59, 0.45);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --toolbar-bg: #020617;
+  --fab-bg: #6366f1;
+  --fab-color: #ffffff;
+}
+
+// Variables cuando el Modo Claro esté Activo
+:host-context(.light-theme) {
+  --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(99, 102, 241, 0.15);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --toolbar-bg: #f1f5f9;
+  --fab-bg: #0f172a;
+  --fab-color: #ffffff;
+}
+
+ion-toolbar {
+  --background: var(--toolbar-bg);
+  --color: var(--text-main);
+  transition: background 0.3s ease;
+  
+  ion-title { font-weight: 800; letter-spacing: -0.5px; }
+}
+
+ion-content {
+  --background: var(--bg-gradient);
+  transition: background 0.3s ease;
+}
+
+// Estructura del Mosaico (Cards en Cuadrícula)
+.crypto-mosaic-card {
+  margin: 8px 0;
+  padding: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 165px;
+  transition: transform 0.2s ease, background 0.3s ease, border 0.3s ease;
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  .card-header-mosaic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ion-avatar {
+      width: 36px;
+      height: 36px;
+    }
+    ion-badge {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+    }
+  }
+
+  .card-body-mosaic {
+    margin-top: 10px;
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .symbol {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 2px 0 8px 0;
+    }
+    .price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+    }
+  }
+
+  .card-actions-mosaic {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    
+    ion-button {
+      --padding-start: 0;
+      --padding-end: 0;
+      margin: 0;
+    }
+  }
+}
+
+// Estilo del botón flotante
+.theme-fab {
+  --background: var(--fab-bg);
+  --color: var(--fab-color);
+  --box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+  transition: --background 0.3s ease;
+}

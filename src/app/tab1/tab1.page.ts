@@ -1,43 +1,70 @@
-import { Component } from "@angular/core";
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonCheckbox,
-} from "@ionic/angular/standalone";
-import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject, Renderer2, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { 
+  IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
+  IonButtons, IonCard, IonAvatar, IonBadge, IonGrid, IonRow, IonCol, IonFab, IonFabButton
+} from '@ionic/angular/standalone';
+import { MercadoService } from '../services/mercado.services';
+import { Activo } from '../interfaces/activo.interfaces';
+import { addIcons } from 'ionicons';
+// Cambiado sunOutline por sunnyOutline 👇
+import { refreshCircleOutline, star, starOutline, sunnyOutline, moonOutline } from 'ionicons/icons';
 
 @Component({
-  selector: "app-tab1",
-  templateUrl: "tab1.page.html",
-  styleUrls: ["tab1.page.scss"],
+  selector: 'app-tab1',
+  templateUrl: 'tab1.page.html',
+  styleUrls: ['tab1.page.scss'],
   standalone: true,
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    CommonModule,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonCheckbox,
-  ],
+    CommonModule, 
+    IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
+    IonButtons, IonCard, IonAvatar, IonBadge, IonGrid, IonRow, IonCol, IonFab, IonFabButton
+  ]
 })
-export class Tab1Page {
-  tareas = [
-    { nombre: "Configurar pnpm en Debian Trixie", completada: true },
-    { nombre: "Levantar el servidor con ionic serve", completada: true },
-    { nombre: "Aprender directivas Standalone", completada: false },
-    { nombre: "Compilar el APK final", completada: false },
-  ];
-  constructor() {}
+export class Tab1Page implements OnInit {
+  private mercadoService = inject(MercadoService);
+  private renderer = inject(Renderer2);
+  private el = inject(ElementRef);
 
-  cambiarEstado(index: number) {
-    this.tareas[index].completada = !this.tareas[index].completada;
+  listaActivos: Activo[] = [];
+  darkMode: boolean = true; 
+
+  constructor() {
+    // Registrado correctamente aquí 👇
+    addIcons({ refreshCircleOutline, star, starOutline, sunnyOutline, moonOutline });
+  }
+
+  ngOnInit() {
+    this.consultarAPI();
+  }
+
+  consultarAPI() {
+    this.mercadoService.getActivos().subscribe({
+      next: (datos: Activo[]) => {
+        this.listaActivos = datos;
+      },
+      error: (err: unknown) => {
+        console.error('Error cargando activos:', err);
+      }
+    });
+  }
+
+  alternarFavorito(id: string) {
+    this.mercadoService.toggleFavorito(id);
+    this.listaActivos = this.listaActivos.map(crypto => {
+      if (crypto.id === id) {
+        return { ...crypto, isFavorite: !crypto.isFavorite };
+      }
+      return crypto;
+    });
+  }
+
+  toggleTheme() {
+    this.darkMode = !this.darkMode;
+    if (!this.darkMode) {
+      this.renderer.addClass(this.el.nativeElement, 'light-theme');
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, 'light-theme');
+    }
   }
 }
