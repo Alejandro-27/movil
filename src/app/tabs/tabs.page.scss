@@ -1,1 +1,74 @@
+// Estilizado de la barra de navegación completa
+.custom-tab-bar {
+  // Despega la barra del fondo y la vuelve flotante
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  
+  // Bordes redondeados y sombra suave de app moderna
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  
+  // Altura y fondo limpio
+  height: 65px;
+  background: #ffffff;
+  --background: #ffffff;
+  
+  // Evita que el contenido de atrás choque feo al hacer scroll
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
 
+// Estilos individuales para cada botón de la pestaña
+.tab-btn {
+  background: transparent;
+  --color: #94a3b8;            // Gris suave para botones inactivos
+  --color-selected: #3880ff;   // Azul vibrante para el botón activo
+  font-weight: 600;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+
+  ion-label {
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  ion-icon {
+    font-size: 1.4rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  // Pequeño efecto de pulsación suave al tocar la pestaña
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+// --- EFECTO DE INTERCAMBIO DE ICONOS (Activo / Inactivo) ---
+
+// Por defecto, esconde el icono relleno
+.tab-btn .active-icon {
+  display: none;
+}
+
+// Cuando la pestaña está seleccionada por Ionic...
+.tab-btn.tab-selected {
+  // Esconde el icono con borde (outline)
+  .inactive-icon {
+    display: none;
+  }
+  // Muestra el icono relleno con color
+  .active-icon {
+    display: inline-block;
+    animation: bounce 0.3s ease-in-out;
+  }
+}
+
+// Animación jugosa de salto cuando seleccionas una pestaña
+@keyframes bounce {
+  0% { transform: scale(0.6); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

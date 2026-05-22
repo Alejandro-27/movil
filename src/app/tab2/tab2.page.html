@@ -1,17 +1,83 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title style="font-weight: 700;">Exchange Pro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  
+  <ion-card class="crypto-card">
+    <div class="gradient-header ion-text-center">
+      <ion-card-title>Conversor Global</ion-card-title>
+    </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-card-content class="ion-padding" style="padding-top: 20px;">
+      
+      <ion-item lines="none" class="input-box">
+        <ion-input 
+          type="number" 
+          label="Monto a enviar"
+          label-placement="stacked"
+          [(ngModel)]="cantidad" 
+          (ionInput)="calcularConversion()" 
+          placeholder="0.00">
+        </ion-input>
+      </ion-item>
+
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="5.5">
+          <ion-item lines="none" class="currency-selector">
+            <ion-select 
+              label="Origen" 
+              label-placement="stacked" 
+              interface="popover"
+              [(ngModel)]="monedaOrigen" 
+              (ionChange)="cambioOrigen()">
+              <ion-select-option *ngFor="let moneda of divisas" [value]="moneda">
+                💰 {{ moneda }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="1" class="ion-text-center" style="display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 1.2rem; color: #94a3b8;">➔</span>
+        </ion-col>
+
+        <ion-col size="5.5">
+          <ion-item lines="none" class="currency-selector">
+            <ion-select 
+              label="Destino" 
+              label-placement="stacked" 
+              interface="popover"
+              [(ngModel)]="monedaDestino" 
+              (ionChange)="cambioDestino()">
+              <ion-select-option *ngFor="let moneda of divisas" [value]="moneda">
+                💵 {{ moneda }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <div class="result-display ion-text-center">
+        <p>Recibes aproximadamente</p>
+        <h1>
+          {{ resultado | number:'1.2-2' }} 
+          <span class="badge-currency">{{ monedaDestino }}</span>
+        </h1>
+        <small *ngIf="tasasCambio && tasasCambio[monedaDestino]">
+          Tasa actual: 1 {{ monedaOrigen }} = {{ tasasCambio[monedaDestino] | number:'1.2-4' }} {{ monedaDestino }}
+        </small>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="toggleTheme()" class="theme-fab">
+        <ion-icon [name]="darkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

@@ -1,0 +1,167 @@
+// =============================================================================
+// DEFINICIÓN DE PALETAS Y VARIABLES POR DEFECTO (Modo Oscuro Premium)
+// =============================================================================
+:host {
+  --bg-gradient: radial-gradient(circle at top right, #1e293b, #020617);
+  --card-bg: rgba(30, 41, 59, 0.45);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --toolbar-bg: #020617;
+  --fab-bg: #6366f1;
+  --fab-color: #ffffff;
+  
+  // Variables específicas adaptadas para los inputs del conversor
+  --input-bg: rgba(15, 23, 42, 0.6);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --result-bg: linear-gradient(to bottom, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+}
+
+// =============================================================================
+// VARIABLES CUANDO EL MODO CLARO ESTÉ ACTIVO (.light-theme)
+// =============================================================================
+:host-context(.light-theme) {
+  --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(99, 102, 241, 0.15);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --toolbar-bg: #f1f5f9;
+  --fab-bg: #0f172a;
+  --fab-color: #ffffff;
+  
+  // Variables específicas adaptadas para los inputs en modo claro
+  --input-bg: #f8fafc;
+  --input-border: #cbd5e1;
+  --result-bg: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+}
+
+// =============================================================================
+// ESTRUCTURA Y COMPONENTES DE IONIC
+// =============================================================================
+ion-toolbar {
+  --background: var(--toolbar-bg);
+  --color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
+  
+  ion-title { font-weight: 800; letter-spacing: -0.5px; }
+}
+
+ion-content {
+  --background: var(--bg-gradient);
+  transition: background 0.3s ease;
+}
+
+// Tarjeta estilo Premium Fintech (Modo Cristal/Glassmorphism adaptativo)
+.crypto-card {
+  background: var(--card-bg); 
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  margin: 16px 12px;
+  overflow: hidden;
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+// Encabezado con degradado moderno ajustado a la estética fintech
+.gradient-header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  padding: 24px 16px;
+  
+  ion-card-title {
+    color: #ffffff !important;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+// Inputs estilizados como cajas flotantes translúcidas
+.input-box {
+  --background: var(--input-bg);
+  --border-radius: 14px;
+  --padding-start: 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--input-border);
+  transition: all 0.25s ease-in-out;
+
+  &:focus-within {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+
+  ion-input {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    --color: var(--text-main);
+  }
+}
+
+// Selectores estilizados como botones premium translúcidos
+.currency-selector {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 14px;
+  margin: 4px 0;
+  transition: background 0.3s ease, border 0.3s ease;
+
+  ion-select {
+    width: 100%;
+    font-weight: 700;
+    color: var(--text-main);
+    --placeholder-color: var(--text-muted);
+  }
+}
+
+// Caja del resultado con impacto de degradado adaptativo
+.result-display {
+  background: var(--result-bg);
+  border-radius: 18px;
+  padding: 22px;
+  margin-top: 20px;
+  border: 1px dashed var(--input-border);
+  transition: background 0.3s ease, border 0.3s ease;
+
+  p {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin: 0 0 6px 0;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin: 0;
+    color: #10b981; // Verde esmeralda fintech vibrante
+    text-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+  }
+
+  .badge-currency {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    font-weight: 800;
+    margin-left: 4px;
+  }
+
+  small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+}
+
+// Estilo del botón flotante (idéntico al Tab1)
+.theme-fab {
+  --background: var(--fab-bg);
+  --color: var(--fab-color);
+  --box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+  transition: --background 0.3s ease;
+}
