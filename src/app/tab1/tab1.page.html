@@ -1,9 +1,14 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title>Mercado Vivo</ion-title>
+    
     <ion-buttons slot="end">
       <ion-button (click)="consultarAPI()">
         <ion-icon slot="icon-only" name="refresh-circle-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button (click)="toggleTheme()" style="font-size: 1.2rem;">
+        <ion-icon [name]="darkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -43,10 +48,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="toggleTheme()" class="theme-fab">
-      <ion-icon [name]="darkMode ? 'sun-outline' : 'moon-outline'"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  
 </ion-content>

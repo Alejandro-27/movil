@@ -1,9 +1,102 @@
+:host {
+  // Paleta de tu Modo Oscuro Premium (Sincronizado con tus Tabs)
+  --bg-gradient: radial-gradient(circle at top right, #1e293b, #020617);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary-glow: #6366f1;
+}
+
+ion-content {
+  // Forzamos el fondo oscuro con degradado envolvente
+  --background: var(--bg-gradient) !important;
+}
+
 .welcome-container {
-    height: 100%; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
-    padding: 20px;
-    h1 { font-size: 2.5rem; font-weight: 800; span { color: var(--ion-color-primary); } }
-    p { color: #94a3b8; margin: 20px 0; font-size: 1.1rem; }
-    .logo { width: 120px; filter: drop-shadow(0 0 20px #6366f1); margin-bottom: 30px; }
-    ion-button { width: 100%; margin-top: 40px; height: 56px; --box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); }
+  height: 100%; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+
+  // Círculo de luz ambiental difuminada detrás del logo
+  .bg-blur-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    top: 15%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .logo { 
+    width: 125px; 
+    filter: drop-shadow(0 0 25px var(--primary-glow)); 
+    margin-bottom: 25px; 
+    z-index: 1;
+  }
+
+  h1 { 
+    font-size: 2.4rem; 
+    font-weight: 800; 
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+    margin: 0;
+    z-index: 1;
+
+    span { 
+      background: linear-gradient(135deg, #6366f1 0%, #2dd36f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    } 
+  }
+
+  p { 
+    color: var(--text-muted); 
+    margin: 20px 0 30px 0; 
+    font-size: 1.05rem; 
+    line-height: 1.6;
+    max-width: 320px;
+    z-index: 1;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    z-index: 1;
+
+    ion-chip {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      font-weight: 600;
+
+      ion-icon {
+        color: var(--primary-glow);
+      }
+    }
+  }
+
+  // Botón estilizado estilofintech premium
+  .explore-btn { 
+    width: 100%; 
+    margin-top: 25px; 
+    height: 56px; 
+    font-weight: 700;
+    font-size: 1.1rem;
+    --background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    --background-hover: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    --box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
+    z-index: 1;
+  }
 }

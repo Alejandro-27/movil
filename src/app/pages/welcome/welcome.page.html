@@ -1,20 +1,27 @@
-
-<ion-content [fullscreen]="true" class="ion-padding" color="dark">
+<ion-content [fullscreen]="true" class="ion-padding">
+  
   <div class="welcome-container">
-    <img src="assets/icon/favicon.png" class="logo" />
+    <div class="bg-blur-circle"></div>
+
+    <img src="assets/icon/favicon.png" class="logo" alt="CryptoPulse Logo" />
+    
     <h1>Bienvenido a <span>CryptoPulse</span></h1>
-    <p>Tu puerta de acceso a los mercados financieros en tiempo real. 
-       Monitorea el top 10 de criptomonedas con datos directos de la API de CoinGecko.</p>
+    
+    <p>
+      Tu puerta de acceso a los mercados financieros en tiempo real. 
+      Monitorea activos top con CoinGecko y gestiona tus conversiones de divisas globales al instante.
+    </p>
     
     <div class="features">
       <ion-chip><ion-icon name="flash"></ion-icon><ion-label>Tiempo Real</ion-label></ion-chip>
+      <ion-chip><ion-icon name="cash"></ion-icon><ion-label>Conversor Pro</ion-label></ion-chip>
       <ion-chip><ion-icon name="shield-checkmark"></ion-icon><ion-label>Seguro</ion-label></ion-chip>
     </div>
 
-    <ion-button expand="block" shape="round" color="primary" routerLink="/tabs/tab1">
+    <ion-button expand="block" shape="round" class="explore-btn" routerLink="/tabs/tab1">
       Explorar Mercados
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
     </ion-button>
   </div>
+
 </ion-content>
-        

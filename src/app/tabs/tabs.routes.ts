@@ -6,6 +6,7 @@ export const routes: Routes = [
     path: '',
     component: TabsPage,
     children: [
+      // Ruta de la primera pestaña (welcome)
       {
         path: 'welcome',
         loadComponent: () => import('../pages/welcome/welcome.page').then((m) => m.WelcomePage),

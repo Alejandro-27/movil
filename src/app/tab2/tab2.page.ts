@@ -6,7 +6,7 @@ import {
   IonHeader, IonToolbar, IonTitle, IonContent, IonCard, 
   IonCardHeader, IonCardTitle, IonCardContent, IonItem, 
   IonInput, IonRow, IonCol, IonSelect, IonSelectOption,
-  IonFab, IonFabButton, IonIcon // <-- AGREGADOS PARA EL FAB
+  IonFab, IonFabButton, IonIcon, IonButtons, IonButton
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons'; // <-- AGREGADO PARA REGISTRAR LOS ICONOS
 import { sunnyOutline, moonOutline } from 'ionicons/icons';
@@ -20,7 +20,7 @@ import { sunnyOutline, moonOutline } from 'ionicons/icons';
     CommonModule, FormsModule, IonHeader, IonToolbar, IonTitle, 
     IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
     IonItem, IonInput, IonRow, IonCol, IonSelect, IonSelectOption,
-    IonFab, IonFabButton, IonIcon // <-- SE INCLUYEN EN LOS IMPORTS DEL COMPONENTE
+    IonFab, IonFabButton, IonIcon, IonButtons, IonButton
   ]
 })
 export class Tab2Page implements OnInit {

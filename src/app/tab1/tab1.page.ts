@@ -30,12 +30,13 @@ export class Tab1Page implements OnInit {
   darkMode: boolean = true; 
 
   constructor() {
-    // Registrado correctamente aquí 👇
+    // Registrado correctamente 
     addIcons({ refreshCircleOutline, star, starOutline, sunnyOutline, moonOutline });
   }
 
   ngOnInit() {
     this.consultarAPI();
+    this.darkMode = !document.body.classList.contains('light-theme');
   }
 
   consultarAPI() {
