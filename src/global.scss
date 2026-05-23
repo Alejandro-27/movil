@@ -55,3 +55,13 @@ body:not(.dark) {
   --ion-color-step-50: #f8fafc !important;
   --ion-color-step-100: #f1f5f9 !important;
 }
+
+// Forzar un espacio de amortiguación al final del contenido para que nada quede oculto tras la barra
+ion-content {
+  --keyboard-offset: 0px;
+  
+  // Añade un margen interno al final de la zona de scroll
+  &::part(scroll) {
+    padding-bottom: 90px !important; 
+  }
+}

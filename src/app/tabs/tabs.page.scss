@@ -1,31 +1,38 @@
-// Estilizado de la barra de navegación completa
-.custom-tab-bar {
+ion-tab-bar.custom-tab-bar {
   // Despega la barra del fondo y la vuelve flotante
   position: absolute;
   bottom: 20px;
   left: 16px;
   right: 16px;
-  
-  // Bordes redondeados y sombra suave de app moderna
-  border-radius: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  
-  // Altura y fondo limpio
   height: 65px;
-  background: #ffffff;
-  --background: #ffffff;
+  
+  // 1. Fondo oscuro profundo
+  background: #020617 !important;
+  --background: #020617 !important;
+  
+  // 2. Colores adaptados a la paleta Premium de CryptoPulse
+  --color: #94a3b8 !important;            // Gris suave para inactivos
+  --color-selected: #6366f1 !important;   // Azul índigo vibrante para activos
+  
+  // Bordes redondeados de isla flotante y sombra premium
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important; // Borde sutil claro para que resalte en fondos oscuros
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   
   // Evita que el contenido de atrás choque feo al hacer scroll
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  // Evitamos parpadeos si se alterna el tema global arriba
+  transition: none !important; 
 }
 
-// Estilos individuales para cada botón de la pestaña
-.tab-btn {
-  background: transparent;
-  --color: #94a3b8;            // Gris suave para botones inactivos
-  --color-selected: #3880ff;   // Azul vibrante para el botón activo
+// ESTILOS DE LOS BOTONES INTERNOS DE LA PESTAÑA
+ion-tab-button.tab-btn {
+  background: transparent !important;
+  --background: transparent !important;
+  --color: #94a3b8 !important;
+  --color-selected: #6366f1 !important;
   font-weight: 600;
   font-size: 0.75rem;
   transition: transform 0.2s ease;
@@ -49,8 +56,10 @@
 // --- EFECTO DE INTERCAMBIO DE ICONOS (Activo / Inactivo) ---
 
 // Por defecto, esconde el icono relleno
-.tab-btn .active-icon {
-  display: none;
+.tab-btn {
+  .active-icon {
+    display: none;
+  }
 }
 
 // Cuando la pestaña está seleccionada por Ionic...
@@ -66,7 +75,7 @@
   }
 }
 
-// Animación jugosa de salto cuando seleccionas una pestaña
+// Animación de salto cuando seleccionas una pestaña
 @keyframes bounce {
   0% { transform: scale(0.6); }
   50% { transform: scale(1.1); }
