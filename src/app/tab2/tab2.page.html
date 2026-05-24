@@ -1,64 +1,80 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title style="font-weight: 700;">Exchange Pro</ion-title>
-    
+    <ion-title style="font-weight: 700">Exchange Pro</ion-title>
+
     <ion-buttons slot="end">
-      <ion-button (click)="toggleTheme()" style="font-size: 1.2rem; --color: var(--text-main);">
-        <ion-icon [name]="darkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+      <ion-button
+        (click)="toggleTheme()"
+        style="font-size: 1.2rem; --color: var(--text-main)"
+      >
+        <ion-icon
+          [name]="darkMode ? 'sunny-outline' : 'moon-outline'"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  
   <ion-card class="crypto-card">
     <div class="gradient-header ion-text-center">
       <ion-card-title>Conversor Global</ion-card-title>
     </div>
 
-    <ion-card-content class="ion-padding" style="padding-top: 20px;">
-      
+    <ion-card-content class="ion-padding" style="padding-top: 20px">
       <ion-item lines="none" class="input-box">
-        <ion-input 
-          type="number" 
+        <ion-input
+          type="number"
           label="Monto a enviar"
           label-placement="stacked"
-          [(ngModel)]="cantidad" 
-          (ionInput)="calcularConversion()" 
-          placeholder="0.00">
+          [(ngModel)]="cantidad"
+          (ionInput)="calcularConversion()"
+          placeholder="0.00"
+        >
         </ion-input>
       </ion-item>
 
       <ion-row class="ion-justify-content-between">
         <ion-col size="5.5">
           <ion-item lines="none" class="currency-selector">
-            <ion-select 
-              label="Origen" 
-              label-placement="stacked" 
+            <ion-select
+              label="Origen"
+              label-placement="stacked"
               interface="popover"
-              [(ngModel)]="monedaOrigen" 
-              (ionChange)="cambioOrigen()">
-              <ion-select-option *ngFor="let moneda of divisas" [value]="moneda">
+              [(ngModel)]="monedaOrigen"
+              (ionChange)="cambioOrigen()"
+            >
+              <ion-select-option
+                *ngFor="let moneda of divisas"
+                [value]="moneda"
+              >
                 💰 {{ moneda }}
               </ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
 
-        <ion-col size="1" class="ion-text-center" style="display: flex; align-items: center; justify-content: center;">
-          <span style="font-size: 1.2rem; color: var(--text-muted);">➔</span>
+        <ion-col
+          size="1"
+          class="ion-text-center"
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <span style="font-size: 1.2rem; color: var(--text-muted)">➔</span>
         </ion-col>
 
         <ion-col size="5.5">
           <ion-item lines="none" class="currency-selector">
-            <ion-select 
-              label="Destino" 
-              label-placement="stacked" 
+            <ion-select
+              label="Destino"
+              label-placement="stacked"
               interface="popover"
-              [(ngModel)]="monedaDestino" 
-              (ionChange)="cambioDestino()">
-              <ion-select-option *ngFor="let moneda of divisas" [value]="moneda">
+              [(ngModel)]="monedaDestino"
+              (ionChange)="cambioDestino()"
+            >
+              <ion-select-option
+                *ngFor="let moneda of divisas"
+                [value]="moneda"
+              >
                 💵 {{ moneda }}
               </ion-select-option>
             </ion-select>
@@ -69,15 +85,15 @@
       <div class="result-display ion-text-center">
         <p>Recibes aproximadamente</p>
         <h1>
-          {{ resultado | number:'1.2-2' }} 
+          {{ resultado | number:'1.2-2' }}
           <span class="badge-currency">{{ monedaDestino }}</span>
         </h1>
         <small *ngIf="tasasCambio && tasasCambio[monedaDestino]">
-          Tasa actual: 1 {{ monedaOrigen }} = {{ tasasCambio[monedaDestino] | number:'1.2-4' }} {{ monedaDestino }}
+          Tasa actual: 1 {{ monedaOrigen }} = {{ tasasCambio[monedaDestino] |
+          number:'1.2-4' }} {{ monedaDestino }}
         </small>
       </div>
-
     </ion-card-content>
   </ion-card>
-
+  <div style="height: 50px; width: 100%"></div>
 </ion-content>
