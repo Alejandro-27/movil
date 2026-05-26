@@ -9,7 +9,7 @@ Antes de empezar, asegúrate de tener instalado en tu sistema:
 - **pnpm** (Gestor de paquetes)
 - **Android Studio** (Para compilación nativa y Gradle)
 
-## 🛠️ Instalación y Configuración
+##  Instalación y Configuración
 
 1. Clona el repositorio o descarga el proyecto.
 2. Instala todas las dependencias necesarias ejecutando en la raíz:
